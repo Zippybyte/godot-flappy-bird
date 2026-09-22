@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jws1hg3f73uv"]
+
+[ext_resource type="Script" uid="uid://bqhubhc6tqh3r" path="res://ground.gd" id="1_t7tip"]
+[ext_resource type="Texture2D" uid="uid://c7q0b1q0w0mxy" path="res://flappy_bird_assets/ground.png" id="1_yh8r4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qm8dg"]
+
+[node name="Ground" type="StaticBody2D" unique_id=182955487 groups=["moving_objects"]]
+script = ExtResource("1_t7tip")
+scroll_speed = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=29393434]
+texture = ExtResource("1_yh8r4")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=262795640]
+shape = SubResource("WorldBoundaryShape2D_qm8dg")

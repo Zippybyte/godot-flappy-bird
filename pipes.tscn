@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://smd8iq7ckair"]
+
+[ext_resource type="Script" uid="uid://rakg7nyw0nd6" path="res://pipes.gd" id="1_og227"]
+[ext_resource type="PackedScene" uid="uid://bskvakmxttvb7" path="res://pipe.tscn" id="2_l4tgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og227"]
+size = Vector2(13, 197)
+
+[node name="Pipes" type="Node2D" unique_id=1381572603 groups=["moving_objects"]]
+script = ExtResource("1_og227")
+scroll_speed = 300
+
+[node name="Upper" parent="." unique_id=1477293285 instance=ExtResource("2_l4tgv")]
+position = Vector2(0, -380)
+scale = Vector2(1, -1)
+
+[node name="Lower" parent="." unique_id=1381435460 instance=ExtResource("2_l4tgv")]
+position = Vector2(0, 380)
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=74450832]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=657924889]
+position = Vector2(46.5, 1.5)
+shape = SubResource("RectangleShape2D_og227")
+
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
