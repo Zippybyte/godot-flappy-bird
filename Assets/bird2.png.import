@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dijlkoefsu1mx"
-path="res://.godot/imported/bird2.png-287d097f0eb3058eedd6311110514eee.ctex"
+path="res://.godot/imported/bird2.png-b01854a05e4bd493cb21f910d0814efc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flappy_bird_assets/bird2.png"
-dest_files=["res://.godot/imported/bird2.png-287d097f0eb3058eedd6311110514eee.ctex"]
+source_file="res://Assets/bird2.png"
+dest_files=["res://.godot/imported/bird2.png-b01854a05e4bd493cb21f910d0814efc.ctex"]
 
 [params]
 

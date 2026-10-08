@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bjkamncs1t5p1"]
+
+[ext_resource type="Script" uid="uid://bidxm1ejlp0ki" path="res://Scripts/start_screen.gd" id="1_ncxyx"]
+
+[node name="StartScreen" type="CanvasLayer" unique_id=1667166313]
+process_mode = 3
+script = ExtResource("1_ncxyx")
+
+[node name="Title" type="Label" parent="." unique_id=1778846483]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 139.0
+offset_right = 165.0
+offset_bottom = 222.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Flappy Bird"
+horizontal_alignment = 1
+
+[node name="ClickToStart" type="Label" parent="." unique_id=1751461166]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = 376.0
+offset_right = 186.0
+offset_bottom = 459.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Click to Start"
+horizontal_alignment = 1

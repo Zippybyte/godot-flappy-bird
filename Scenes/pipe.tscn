@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bskvakmxttvb7"]
 
-[ext_resource type="Texture2D" uid="uid://bgrinu1p7gvfv" path="res://flappy_bird_assets/pipe.png" id="1_bepn3"]
+[ext_resource type="Texture2D" uid="uid://bgrinu1p7gvfv" path="res://Assets/pipe.png" id="1_n21g0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm8dg"]
 size = Vector2(76, 34)
@@ -11,7 +11,7 @@ size = Vector2(70, 525)
 [node name="Pipe" type="StaticBody2D" unique_id=1813063367]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1856607254]
-texture = ExtResource("1_bepn3")
+texture = ExtResource("1_n21g0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537391374]
 position = Vector2(0, -262)

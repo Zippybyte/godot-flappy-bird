@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b581acta0a5v0"
-path="res://.godot/imported/restart.png-32906a7f6fcbed971a210c9373289c14.ctex"
+uid="uid://c7q0b1q0w0mxy"
+path="res://.godot/imported/ground.png-d6215276157ad844710057a2579c5395.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flappy_bird_assets/restart.png"
-dest_files=["res://.godot/imported/restart.png-32906a7f6fcbed971a210c9373289c14.ctex"]
+source_file="res://Assets/ground.png"
+dest_files=["res://.godot/imported/ground.png-d6215276157ad844710057a2579c5395.ctex"]
 
 [params]
 
