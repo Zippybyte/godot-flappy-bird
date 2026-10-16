@@ -1,12 +1,13 @@
 extends StaticBody2D
 
-@onready var scroll_speed : float = GameSettings.scroll_speed
-var scroll : float = 0
-var sprite_width : float
+@export var scroll_speed : int = 100
+var scroll : int = 0
+var sprite_width : int
 
 func _ready():
 	sprite_width = $Sprite2D.texture.get_width()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Scroll increases until it reaches half the sprite width
 	# then resets to 0. Illusion of constantly moving ground.
