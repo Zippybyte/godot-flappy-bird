@@ -6,8 +6,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qm8dg"]
 
 [node name="Ground" type="StaticBody2D" unique_id=182955487 groups=["moving_objects"]]
+z_index = 1
 script = ExtResource("1_t7tip")
-scroll_speed = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29393434]
 texture = ExtResource("1_yh8r4")

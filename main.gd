@@ -3,25 +3,30 @@ extends Node
 @export var pipe_scene: PackedScene
 @export var pipe_range: int = 200
 
-const PIPE_PADDING: int = 100 # Sets how far the pipe spawns off screen
-
-var pipe_spawn_location : Vector2
-
 var score : int = 0
 
-# Called when the node enters the scene tree for the first time.
+const PIPE_PADDING: int = 100 # Sets how far the pipe spawns off screen
+var pipe_spawn_location : Vector2
+
 func _ready() -> void:
-	# Pipe spawns off screen to the right with PIPE_PADDING distance from right edge of screen.
+	# Pipe spawns off screen with PIPE_PADDING distance from right edge of screen.
 	# Pipe y value is set to the middle point of the background.
-	pipe_spawn_location = Vector2(get_window().size.x + PIPE_PADDING, $Background.texture.get_height() / 2)
+	pipe_spawn_location.x = $Background.texture.get_width() + PIPE_PADDING
+	pipe_spawn_location.y = $Background.texture.get_height() / 2
 	get_tree().paused = true
+	
+	
+	HighScore.load_score()
+	$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
 
 func start_game():
 	get_tree().paused = false # Unpause the game
+	$StartScreen.hide()
 	generate_pipe()
-	$PipeTimer.start() # Start making pipes
-	$ScoreLabel.text = "SCORE: " + str(score)
-	$StartGame.hide() # Hide the start game text
+	$PipeTimer.start()
+
+func _on_start_screen_start_game() -> void:
+	start_game()
 
 func generate_pipe():
 	var pipe = pipe_scene.instantiate()
@@ -32,28 +37,45 @@ func generate_pipe():
 	# Add an offset from the center of the background
 	pipe.position.y += randi_range(-pipe_range, pipe_range)
 	
-	# Attach signal to increase score when bird goes between a pipe
-	pipe.scored.connect(scored)
+	pipe.scored.connect(increment_score)
 	
 	# Put the Node into the scene tree
 	add_child(pipe)
 
-# Increase score whenever the bird passes through a pipe.
-func scored():
+var is_day : bool = true
+
+func increment_score():
 	score += 1
 	$ScoreLabel.text = "SCORE: " + str(score)
+	if score > HighScore.high_score:
+		HighScore.high_score = score
+		$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
+		
+	if score % 10 == 0:
+		if is_day:
+			%AnimationPlayer.play("day_night")
+			is_day = false
+		else:
+			%AnimationPlayer.play_backwards("day_night")
+			is_day = true
+			
+		
+func _input(event):
+	if event.is_action_pressed("reset_highscore"):
+		HighScore.high_score = 0
+		HighScore.save_score()
 
-# Spawn pipes when the timer runs out
+
 func _on_pipe_timer_timeout() -> void:
 	generate_pipe()
 
-# Handle game over functionality
-func _on_bird_game_over() -> void:
+func _on_bird_game_ended() -> void:
+	
+	HighScore.save_score()
+	if score > HighScore.high_score:
+		HighScore.high_score = score
+	
 	$GameOver.show()
 	$PipeTimer.stop()
 	# Stop pipes and ground from moving
 	get_tree().set_group("moving_objects", "process_mode", Node.PROCESS_MODE_DISABLED)
-
-
-func _on_start_game_start_game() -> void:
-	start_game()
