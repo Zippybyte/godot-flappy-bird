@@ -8,7 +8,6 @@ size = Vector2(13, 197)
 
 [node name="Pipes" type="Node2D" unique_id=1381572603 groups=["moving_objects"]]
 script = ExtResource("1_og227")
-scroll_speed = 300
 
 [node name="Upper" parent="." unique_id=1477293285 instance=ExtResource("2_l4tgv")]
 position = Vector2(0, -380)
