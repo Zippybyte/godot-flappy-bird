@@ -86,6 +86,7 @@ func _input(event):
 	if event.is_action_pressed("reset_highscore"):
 		HighScore.high_score = 0
 		HighScore.save_score()
+		$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
 	# Disable jumpscare
 	elif event.is_action_pressed("disable_jumpscare"):
 		randomJumpscare = -1
