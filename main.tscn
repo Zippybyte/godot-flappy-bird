@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://crpnf0asi165q" path="res://bird.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://iqc1rrs4bfuy" path="res://jumpscare.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://smd8iq7ckair" path="res://pipes.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://3p3csurjjrgo" path="res://jumpscare2.tscn" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://ykpfw01iyt01" path="res://game_over.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://jws1hg3f73uv" path="res://ground.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bjkamncs1t5p1" path="res://start_screen.tscn" id="7_272bh"]
@@ -52,7 +53,7 @@ normal = Vector2(0, 1)
 [node name="Main" type="Node" unique_id=694426075]
 script = ExtResource("1_h2yge")
 pipe_scene = ExtResource("4_1bvp3")
-jumpscare_scene = ExtResource("3_5vw27")
+jumpscare_scenes = Array[PackedScene]([ExtResource("3_5vw27"), ExtResource("4_kek77")])
 
 [node name="Background" type="Sprite2D" parent="." unique_id=402101381]
 texture = ExtResource("1_ig7tw")

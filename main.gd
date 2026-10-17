@@ -9,9 +9,8 @@ var score : int = 0
 const PIPE_PADDING: int = 100 # Sets how far the pipe spawns off screen
 var pipe_spawn_location : Vector2
 
-@export var jumpscare_scene: PackedScene
 
-
+@export var jumpscare_scenes: Array[PackedScene]
 
 func _ready() -> void:
 	# Pipe spawns off screen with PIPE_PADDING distance from right edge of screen.
@@ -48,7 +47,9 @@ func generate_pipe():
 	add_child(pipe)
 
 var is_day : bool = true
-var randomJumpscare = randi_range(1, 3) + score
+var jumpscare_min = 1
+var jumpscare_max = 3
+var randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
 
 func increment_score():
 	score += 1
@@ -69,10 +70,15 @@ func increment_score():
 
 	
 	if randomJumpscare == score:
-		var jumpscare = jumpscare_scene.instantiate()
-		add_child(jumpscare)
-		randomJumpscare = randi_range(1, 3) + score
+		trigger_jumpscare()
+		randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
 			
+	
+	
+func trigger_jumpscare():
+	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
+	var jumpscare = jumpscare_scene.instantiate()
+	add_child(jumpscare)
 	
 			
 	
