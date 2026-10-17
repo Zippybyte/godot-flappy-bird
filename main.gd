@@ -64,28 +64,35 @@ func increment_score():
 		else:
 			%AnimationPlayer.play_backwards("day_night")
 			is_day = true
-	
-	
 
-	
 	if randomJumpscare == score:
 		trigger_jumpscare()
-		randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
-			
-	
-	
+		set_jumpscare_score()
+
 func trigger_jumpscare():
 	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
 	var jumpscare = jumpscare_scene.instantiate()
 	add_child(jumpscare)
 	
-			
-	
-		
+func set_jumpscare_score():
+	randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
+
 func _input(event):
 	if event.is_action_pressed("reset_highscore"):
 		HighScore.high_score = 0
 		HighScore.save_score()
+	# Disable jumpscare
+	elif event.is_action_pressed("disable_jumpscare"):
+		randomJumpscare = -1
+	# Enables jumpscare based on settings
+	elif event.is_action_pressed("enable_jumpscare"):
+		set_jumpscare_score()
+	# Jumpscare immediately
+	elif event.is_action_pressed("jumpscare"):
+		trigger_jumpscare()
+	# Set jumpscare to next score
+	elif event.is_action_pressed("jumpscare_next_score"):
+		randomJumpscare = score + 1
 
 
 func _on_pipe_timer_timeout() -> void:
