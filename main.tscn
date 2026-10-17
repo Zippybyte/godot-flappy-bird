@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jws1hg3f73uv" path="res://ground.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d4k2g6pywww34" path="res://Jumpscares/jumpscare4.tscn" id="6_efxa6"]
 [ext_resource type="PackedScene" uid="uid://bjkamncs1t5p1" path="res://start_screen.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://dr3kju3dvo6he" path="res://Jumpscares/jumpscare5.tscn" id="7_dg77c"]
 
 [sub_resource type="Animation" id="Animation_272bh"]
 length = 2.0
@@ -55,7 +56,7 @@ normal = Vector2(0, 1)
 [node name="Main" type="Node" unique_id=694426075]
 script = ExtResource("1_h2yge")
 pipe_scene = ExtResource("4_1bvp3")
-jumpscare_scenes = Array[PackedScene]([ExtResource("3_5vw27"), ExtResource("4_kek77"), ExtResource("5_4c57u"), ExtResource("6_efxa6")])
+jumpscare_scenes = Array[PackedScene]([ExtResource("3_5vw27"), ExtResource("4_kek77"), ExtResource("5_4c57u"), ExtResource("6_efxa6"), ExtResource("7_dg77c")])
 
 [node name="Background" type="Sprite2D" parent="." unique_id=402101381]
 texture = ExtResource("1_ig7tw")

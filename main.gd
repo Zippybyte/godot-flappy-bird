@@ -4,8 +4,8 @@ extends Node
 @export var pipe_range: int = 200
 
 # Jumpscare min 
-@export var jumpscare_min: int = 1
-@export var jumpscare_max: int = 3
+@export var jumpscare_min: int = 10
+@export var jumpscare_max: int = 18
 @export var jumpscare_enabled: bool = false 
 
 @export var jumpscare_scenes: Array[PackedScene]
