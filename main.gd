@@ -4,9 +4,11 @@ extends Node
 @export var pipe_range: int = 200
 
 # Jumpscare min 
-@export var jumpscare_min: int = 1
-@export var jumpscare_max: int = 3
+
+@export var jumpscare_min: int = 10
+@export var jumpscare_max: int = 18
 @export var jumpscare_enabled: bool = false 
+
 
 @export var jumpscare_scenes: Array[PackedScene]
 
@@ -19,22 +21,30 @@ var pipe_spawn_location : Vector2
 
 var is_day : bool = true
 var randomJumpscare: int = -1
+var jumpscare_next: bool = false
 
 func _ready() -> void:
+	# Connect debug keys
+	DebugKeys.reset_highscore.connect(update_highscore_label)
+	DebugKeys.disable_jumpscare.connect(disable_jumpscare)
+	DebugKeys.enable_jumpscare.connect(enable_jumpscare)
+	DebugKeys.jumpscare.connect(trigger_jumpscare)
+	DebugKeys.jumpscare_next_score.connect(jumpscare_next_score)
+	
 	# Pipe spawns off screen with PIPE_PADDING distance from right edge of screen.
 	# Pipe y value is set to the middle point of the background.
 	pipe_spawn_location.x = $Background.texture.get_width() + PIPE_PADDING
 	pipe_spawn_location.y = $Background.texture.get_height() / 2
-	get_tree().paused = true
+	self.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	HighScore.load_score()
-	$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
+	update_highscore_label()
 	
-	if (jumpscare_enabled):
+	if (JumpscareManager.jumpscare_enabled):
 		randomize_jumpscare_score()
 
 func start_game():
-	get_tree().paused = false # Unpause the game
+	self.process_mode = Node.PROCESS_MODE_INHERIT # Unpause the game
 	$StartScreen.hide()
 	generate_pipe()
 	$PipeTimer.start()
@@ -61,7 +71,7 @@ func increment_score():
 	$ScoreLabel.text = "SCORE: " + str(score)
 	if score > HighScore.high_score:
 		HighScore.high_score = score
-		$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
+		update_highscore_label()
 		
 	if score % 10 == 0:
 		if is_day:
@@ -72,14 +82,16 @@ func increment_score():
 			is_day = true
 			
 
-	if randomJumpscare == score:
+	if randomJumpscare == score or jumpscare_next:
 		trigger_jumpscare()
 		randomize_jumpscare_score()
+		jumpscare_next = false
 		
 	if score == 67:
 		var jumpscare = jumpscare67.instantiate()
 		add_child(jumpscare)
 		
+
 
 func trigger_jumpscare():
 	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
@@ -88,25 +100,24 @@ func trigger_jumpscare():
 	
 func randomize_jumpscare_score():
 	randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
+	print_debug("Jumpscare at " + str(randomJumpscare) + " score")
 
-func _input(event):
-	if event.is_action_pressed("reset_highscore"):
-		HighScore.high_score = 0
-		HighScore.save_score()
-	# Disable jumpscare
-	elif event.is_action_pressed("disable_jumpscare"):
-		randomJumpscare = -1
-	# Enables jumpscare only if disabled
-	elif event.is_action_pressed("enable_jumpscare"):
-		if (randomJumpscare == -1):
-			randomize_jumpscare_score()
-	# Jumpscare immediately
-	elif event.is_action_pressed("jumpscare"):
-		trigger_jumpscare()
-	# Set jumpscare to next score
-	elif event.is_action_pressed("jumpscare_next_score"):
-		randomJumpscare = score + 1
 
+
+
+func update_highscore_label() -> void:
+	$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
+
+# Debug key functions
+func disable_jumpscare():
+	randomJumpscare = -1
+
+func enable_jumpscare():
+	if (randomJumpscare == -1):
+		randomize_jumpscare_score()
+
+func jumpscare_next_score():
+	jumpscare_next = true
 
 func _on_pipe_timer_timeout() -> void:
 	generate_pipe()

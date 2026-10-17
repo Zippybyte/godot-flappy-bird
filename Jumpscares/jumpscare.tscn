@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="Control" type="CanvasLayer" unique_id=1087005989]
+process_mode = 3
 layer = 2
 script = ExtResource("1_6rciv")
 
@@ -78,7 +79,7 @@ autoplay = &"jumpscare_anim"
 
 [node name="JumpscareSound" type="AudioStreamPlayer" parent="." unique_id=37628663]
 stream = ExtResource("2_dkw4f")
-volume_db = 6.0
+volume_db = 5.0
 autoplay = true
 bus = &"Jumpscare"
 

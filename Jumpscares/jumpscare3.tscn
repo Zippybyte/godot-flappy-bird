@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://Jumpscares/jumpscare.gd" id="1_ejjyv"]
 [ext_resource type="Texture2D" uid="uid://g0vbtgac5pup" path="res://Jumpscares/Images/fnaf-scary.png" id="2_ejjyv"]
-[ext_resource type="AudioStream" uid="uid://cjwekndeuejxm" path="res://Jumpscares/Audio/Fnaf Jumpscare Sound Effect.mp3" id="3_ejjyv"]
+[ext_resource type="AudioStream" uid="uid://d14tfij5xupee" path="res://Jumpscares/Audio/Fnaf Jumpscare Sound Effect.mp3" id="3_ejjyv"]
 
 [sub_resource type="Animation" id="Animation_lc0cw"]
 length = 0.8
@@ -90,6 +90,7 @@ _data = {
 }
 
 [node name="Control" type="CanvasLayer" unique_id=1087005989]
+process_mode = 3
 layer = 2
 script = ExtResource("1_ejjyv")
 
