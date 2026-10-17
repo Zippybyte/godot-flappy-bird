@@ -13,6 +13,10 @@ modulate_color = Color(0.6715141, 0.67151415, 0.6715141, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nu757"]
 texture = ExtResource("2_yxx3c")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccer4"]
+texture = ExtResource("2_yxx3c")
+modulate_color = Color(0.5227242, 0.5227243, 0.5227242, 1)
+
 [node name="GameOver" type="CanvasLayer" unique_id=1405553196]
 process_mode = 3
 script = ExtResource("1_y26ei")
@@ -48,5 +52,26 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_qm8dg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kau46")
 theme_override_styles/hover = SubResource("StyleBoxTexture_nu757")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ccer4")
+
+[node name="LockOutTimer" type="Timer" parent="." unique_id=1478171417]
+
+[node name="PressAnyButton" type="Label" parent="." unique_id=2111367535]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.5
+offset_top = -112.0
+offset_right = 215.5
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Press Space or Click to restart"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="LockOutTimer" to="." method="_on_lock_out_timer_timeout"]

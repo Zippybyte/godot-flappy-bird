@@ -76,6 +76,7 @@ func _on_bird_game_ended() -> void:
 		HighScore.high_score = score
 	
 	$GameOver.show()
+	$GameOver.game_over() 
 	$PipeTimer.stop()
 	# Stop pipes and ground from moving
 	get_tree().set_group("moving_objects", "process_mode", Node.PROCESS_MODE_DISABLED)
