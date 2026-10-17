@@ -3,14 +3,19 @@ extends Node
 @export var pipe_scene: PackedScene
 @export var pipe_range: int = 200
 
+# Jumpscare min 
+@export var jumpscare_min: int = 1
+@export var jumpscare_max: int = 3
+
+@export var jumpscare_scenes: Array[PackedScene]
 
 var score : int = 0
 
 const PIPE_PADDING: int = 100 # Sets how far the pipe spawns off screen
 var pipe_spawn_location : Vector2
 
-
-@export var jumpscare_scenes: Array[PackedScene]
+var is_day : bool = true
+var randomJumpscare: int = -1
 
 func _ready() -> void:
 	# Pipe spawns off screen with PIPE_PADDING distance from right edge of screen.
@@ -18,7 +23,6 @@ func _ready() -> void:
 	pipe_spawn_location.x = $Background.texture.get_width() + PIPE_PADDING
 	pipe_spawn_location.y = $Background.texture.get_height() / 2
 	get_tree().paused = true
-	
 	
 	HighScore.load_score()
 	$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
@@ -45,11 +49,6 @@ func generate_pipe():
 	
 	# Put the Node into the scene tree
 	add_child(pipe)
-
-var is_day : bool = true
-var jumpscare_min = 1
-var jumpscare_max = 3
-var randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
 
 func increment_score():
 	score += 1
