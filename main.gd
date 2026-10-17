@@ -80,6 +80,7 @@ func trigger_jumpscare():
 	
 func randomize_jumpscare_score():
 	randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
+	print_debug("Jumpscare at " + str(randomJumpscare) + " score")
 
 func _input(event):
 	if event.is_action_pressed("reset_highscore"):
