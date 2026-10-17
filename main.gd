@@ -16,6 +16,7 @@ var pipe_spawn_location : Vector2
 
 var is_day : bool = true
 var randomJumpscare: int = -1
+var jumpscare_next: bool = false
 
 func _ready() -> void:
 	# Pipe spawns off screen with PIPE_PADDING distance from right edge of screen.
@@ -68,9 +69,10 @@ func increment_score():
 			%AnimationPlayer.play_backwards("day_night")
 			is_day = true
 
-	if randomJumpscare == score:
+	if randomJumpscare == score or jumpscare_next:
 		trigger_jumpscare()
 		randomize_jumpscare_score()
+		jumpscare_next = false
 
 func trigger_jumpscare():
 	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
@@ -100,7 +102,7 @@ func _input(event):
 		trigger_jumpscare()
 	# Set jumpscare to next score
 	elif event.is_action_pressed("jumpscare_next_score"):
-		randomJumpscare = score + 1
+		jumpscare_next = true
 
 
 func _on_pipe_timer_timeout() -> void:
