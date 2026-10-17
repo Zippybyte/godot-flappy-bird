@@ -4,11 +4,13 @@ extends Node
 @export var pipe_range: int = 200
 
 # Jumpscare min 
-@export var jumpscare_min: int = 10
-@export var jumpscare_max: int = 18
+@export var jumpscare_min: int = 1
+@export var jumpscare_max: int = 3
 @export var jumpscare_enabled: bool = false 
 
 @export var jumpscare_scenes: Array[PackedScene]
+
+@export var jumpscare67 : PackedScene
 
 var score : int = 0
 
@@ -68,10 +70,16 @@ func increment_score():
 		else:
 			%AnimationPlayer.play_backwards("day_night")
 			is_day = true
+			
 
 	if randomJumpscare == score:
 		trigger_jumpscare()
 		randomize_jumpscare_score()
+		
+	if score == 67:
+		var jumpscare = jumpscare67.instantiate()
+		add_child(jumpscare)
+		
 
 func trigger_jumpscare():
 	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
