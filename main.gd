@@ -6,6 +6,7 @@ extends Node
 # Jumpscare min 
 @export var jumpscare_min: int = 1
 @export var jumpscare_max: int = 3
+@export var jumpscare_enabled: bool = false 
 
 @export var jumpscare_scenes: Array[PackedScene]
 
@@ -26,6 +27,9 @@ func _ready() -> void:
 	
 	HighScore.load_score()
 	$HighScoreLabel.text = "HIGH SCORE: " + str(HighScore.high_score)
+	
+	if (jumpscare_enabled):
+		randomize_jumpscare_score()
 
 func start_game():
 	get_tree().paused = false # Unpause the game
@@ -67,14 +71,14 @@ func increment_score():
 
 	if randomJumpscare == score:
 		trigger_jumpscare()
-		set_jumpscare_score()
+		randomize_jumpscare_score()
 
 func trigger_jumpscare():
 	var jumpscare_scene: PackedScene = jumpscare_scenes.pick_random()
 	var jumpscare = jumpscare_scene.instantiate()
 	add_child(jumpscare)
 	
-func set_jumpscare_score():
+func randomize_jumpscare_score():
 	randomJumpscare = randi_range(jumpscare_min, jumpscare_max) + score
 
 func _input(event):
@@ -84,9 +88,10 @@ func _input(event):
 	# Disable jumpscare
 	elif event.is_action_pressed("disable_jumpscare"):
 		randomJumpscare = -1
-	# Enables jumpscare based on settings
+	# Enables jumpscare only if disabled
 	elif event.is_action_pressed("enable_jumpscare"):
-		set_jumpscare_score()
+		if (randomJumpscare == -1):
+			randomize_jumpscare_score()
 	# Jumpscare immediately
 	elif event.is_action_pressed("jumpscare"):
 		trigger_jumpscare()
