@@ -118,6 +118,7 @@ autoplay = &"jumpscare_anim"
 
 [node name="JumpscareSound" type="AudioStreamPlayer" parent="." unique_id=37628663]
 stream = ExtResource("3_5qr01")
+volume_db = -5.0
 autoplay = true
 bus = &"Jumpscare"
 

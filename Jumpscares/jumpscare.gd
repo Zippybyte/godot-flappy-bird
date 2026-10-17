@@ -3,7 +3,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$JumpscareSound.pitch_scale = randf_range(0.3, 1)
+	pass
+	$JumpscareSound.pitch_scale -= randf_range(0, 0.7)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
