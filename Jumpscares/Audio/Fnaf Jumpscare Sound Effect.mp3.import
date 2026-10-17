@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d14tfij5xupee"
+path="res://.godot/imported/Fnaf Jumpscare Sound Effect.mp3-07dcbd348adddc88b66d71d9eda5a366.mp3str"
+
+[deps]
+
+source_file="res://Jumpscares/Audio/Fnaf Jumpscare Sound Effect.mp3"
+dest_files=["res://.godot/imported/Fnaf Jumpscare Sound Effect.mp3-07dcbd348adddc88b66d71d9eda5a366.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

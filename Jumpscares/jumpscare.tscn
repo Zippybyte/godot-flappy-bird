@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://iqc1rrs4bfuy"]
 
-[ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://jumpscare.gd" id="1_6rciv"]
-[ext_resource type="Texture2D" uid="uid://dfdw83eae45wp" path="res://fbb2420b322174062c8d656028c0e210.jpg" id="1_lc0cw"]
-[ext_resource type="AudioStream" uid="uid://d0gsqvex33lby" path="res://audiomass-output.mp3" id="2_dkw4f"]
-[ext_resource type="Animation" uid="uid://dwuk2ivgld0j" path="res://jumpscare_anim.tres" id="3_4qc3y"]
+[ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://Jumpscares/jumpscare.gd" id="1_6rciv"]
+[ext_resource type="Texture2D" uid="uid://dfdw83eae45wp" path="res://Jumpscares/Images/fbb2420b322174062c8d656028c0e210.jpg" id="1_lc0cw"]
+[ext_resource type="AudioStream" uid="uid://d0gsqvex33lby" path="res://Jumpscares/Audio/audiomass-output.mp3" id="2_dkw4f"]
+[ext_resource type="Animation" uid="uid://dwuk2ivgld0j" path="res://Jumpscares/jumpscare_anim.tres" id="3_4qc3y"]
 
 [sub_resource type="Animation" id="Animation_lc0cw"]
 length = 0.001

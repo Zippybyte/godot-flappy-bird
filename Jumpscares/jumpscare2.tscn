@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://igsdxq5eo3rh"]
+[gd_scene format=3 uid="uid://3p3csurjjrgo"]
 
-[ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://jumpscare.gd" id="1_ejjyv"]
-[ext_resource type="Texture2D" uid="uid://g0vbtgac5pup" path="res://fnaf-scary.png" id="2_ejjyv"]
-[ext_resource type="AudioStream" uid="uid://cjwekndeuejxm" path="res://Fnaf Jumpscare Sound Effect.mp3" id="3_ejjyv"]
+[ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://Jumpscares/jumpscare.gd" id="1_5qr01"]
+[ext_resource type="Texture2D" uid="uid://do88jsok38s82" path="res://Jumpscares/Images/spongebob.png" id="2_5qr01"]
+[ext_resource type="AudioStream" uid="uid://bqxwovv1woocq" path="res://Jumpscares/Audio/jumpscare.mp3" id="3_5qr01"]
 
 [sub_resource type="Animation" id="Animation_lc0cw"]
 length = 0.8
@@ -91,7 +91,7 @@ _data = {
 
 [node name="Control" type="CanvasLayer" unique_id=1087005989]
 layer = 2
-script = ExtResource("1_ejjyv")
+script = ExtResource("1_5qr01")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=456890510]
 modulate = Color(1, 1, 1, 0)
@@ -107,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_pivot_ratio = Vector2(0, 0)
-texture = ExtResource("2_ejjyv")
+texture = ExtResource("2_5qr01")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1328850197]
@@ -116,7 +116,7 @@ libraries/ = SubResource("AnimationLibrary_6rciv")
 autoplay = &"jumpscare_anim"
 
 [node name="JumpscareSound" type="AudioStreamPlayer" parent="." unique_id=37628663]
-stream = ExtResource("3_ejjyv")
+stream = ExtResource("3_5qr01")
 autoplay = true
 bus = &"Jumpscare"
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do88jsok38s82"
-path="res://.godot/imported/spongebob.png-5180347f79e64ce4d0a821535a9a0d55.ctex"
+uid="uid://dngkx7xvxbldd"
+path="res://.godot/imported/ezgif-8f90cb5cdc6fc5f7.png-be77b3784bbf4d1c779d8944d7e7b067.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spongebob.png"
-dest_files=["res://.godot/imported/spongebob.png-5180347f79e64ce4d0a821535a9a0d55.ctex"]
+source_file="res://Jumpscares/Images/ezgif-8f90cb5cdc6fc5f7.png"
+dest_files=["res://.godot/imported/ezgif-8f90cb5cdc6fc5f7.png-be77b3784bbf4d1c779d8944d7e7b067.ctex"]
 
 [params]
 
