@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crur38g7i46qa" path="res://Jumpscares/jumpscare_4.gd" id="1_p2ltt"]
 [ext_resource type="Texture2D" uid="uid://dngkx7xvxbldd" path="res://Jumpscares/Images/ezgif-8f90cb5cdc6fc5f7.png" id="2_p2ltt"]
-[ext_resource type="AudioStream" uid="uid://cjwekndeuejxm" path="res://Jumpscares/Audio/Fnaf Jumpscare Sound Effect.mp3" id="3_b7n8k"]
+[ext_resource type="AudioStream" uid="uid://d14tfij5xupee" path="res://Jumpscares/Audio/Fnaf Jumpscare Sound Effect.mp3" id="3_b7n8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4y3si"]
 atlas = ExtResource("2_p2ltt")
@@ -118,6 +118,7 @@ animations = [{
 }]
 
 [node name="Control" type="CanvasLayer" unique_id=1087005989]
+process_mode = 3
 layer = 2
 script = ExtResource("1_p2ltt")
 
