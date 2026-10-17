@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://iqc1rrs4bfuy"]
+
+[ext_resource type="Script" uid="uid://kgrmc2qp2dri" path="res://jumpscare.gd" id="1_6rciv"]
+[ext_resource type="Texture2D" uid="uid://dfdw83eae45wp" path="res://fbb2420b322174062c8d656028c0e210.jpg" id="1_lc0cw"]
+[ext_resource type="AudioStream" uid="uid://d0gsqvex33lby" path="res://audiomass-output.mp3" id="2_dkw4f"]
+
+[sub_resource type="Animation" id="Animation_lc0cw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(168, 157)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(346, 367)]
+}
+
+[sub_resource type="Animation" id="Animation_dkw4f"]
+resource_name = "jumpscare_anim"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.46666667, 0.6333333),
+"transitions": PackedFloat32Array(0.101531535, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13448232),
+"transitions": PackedFloat32Array(0.37892905, 1),
+"update": 0,
+"values": [Vector2(168, 157), Vector2(848, 938)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13170679),
+"transitions": PackedFloat32Array(0.37892905, 1),
+"update": 0,
+"values": [Vector2(346, 367), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rciv"]
+_data = {
+&"RESET": SubResource("Animation_lc0cw"),
+&"jumpscare_anim": SubResource("Animation_dkw4f")
+}
+
+[node name="Control" type="CanvasLayer" unique_id=1087005989]
+layer = 2
+script = ExtResource("1_6rciv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=456890510]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 346.0
+offset_top = 367.0
+offset_right = -334.0
+offset_bottom = -414.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_pivot_ratio = Vector2(0, 0)
+texture = ExtResource("1_lc0cw")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1328850197]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_6rciv")
+autoplay = &"jumpscare_anim"
+
+[node name="JumpscareSound" type="AudioStreamPlayer" parent="." unique_id=37628663]
+stream = ExtResource("2_dkw4f")
+autoplay = true
+bus = &"Jumpscare"
+
+[connection signal="animation_finished" from="TextureRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
