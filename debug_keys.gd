@@ -7,7 +7,7 @@ signal jumpscare
 signal jumpscare_next_score
 
 func _input(event):
-	print(event)
+	#print(event)
 	if event.is_action_pressed("reset_highscore"):
 		HighScore.high_score = 0
 		HighScore.save_score()
