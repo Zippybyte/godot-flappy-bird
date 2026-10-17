@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://d4k2g6pywww34"]
+
+[ext_resource type="Script" uid="uid://crur38g7i46qa" path="res://jumpscare_4.gd" id="1_p2ltt"]
+[ext_resource type="Texture2D" uid="uid://dngkx7xvxbldd" path="res://ezgif-8f90cb5cdc6fc5f7.png" id="2_p2ltt"]
+[ext_resource type="AudioStream" uid="uid://cjwekndeuejxm" path="res://Fnaf Jumpscare Sound Effect.mp3" id="3_b7n8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y3si"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(0, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7n8k"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(200, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to0i4"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(400, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tx3x"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(600, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt5hi"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(800, 0, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrb0y"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(0, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vtvt"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(200, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5775h"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(400, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro557"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(600, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1l7n"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(800, 150, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm2ej"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(0, 300, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yceh"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(200, 300, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mpng"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(400, 300, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulre"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(600, 300, 200, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjkat"]
+atlas = ExtResource("2_p2ltt")
+region = Rect2(800, 300, 200, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qk0c4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y3si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7n8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to0i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tx3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt5hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrb0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vtvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5775h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro557")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1l7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm2ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yceh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mpng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjkat")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Control" type="CanvasLayer" unique_id=1087005989]
+layer = 2
+script = ExtResource("1_p2ltt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2021561835]
+position = Vector2(425.50003, 471)
+scale = Vector2(4.2450004, 6.226667)
+sprite_frames = SubResource("SpriteFrames_qk0c4")
+frame = 14
+frame_progress = 1.0
+
+[node name="JumpscareSound" type="AudioStreamPlayer" parent="." unique_id=37628663]
+stream = ExtResource("3_b7n8k")
+autoplay = true
+bus = &"Jumpscare"
+
+[connection signal="finished" from="JumpscareSound" to="." method="_on_jumpscare_sound_finished"]
